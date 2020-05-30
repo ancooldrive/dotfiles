@@ -1,4 +1,4 @@
-test=$(~/Dokumenty/test/getVolume.sh)
+test=$(~/.config/tint2/Scripts/getVolume.sh)
 test=$((test-10))
 
 if [ $test -lt 0 ] 
