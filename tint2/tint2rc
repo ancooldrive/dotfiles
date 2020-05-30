@@ -85,7 +85,7 @@ border_color_pressed = #aaffaa 100
 
 #-------------------------------------
 # Panel
-panel_items = TFE:E:C
+panel_items = TFE:E:E:C
 panel_size = 100% 20
 panel_margin = 0 0
 panel_padding = 2 0 2
@@ -230,7 +230,38 @@ separator_size = 1
 separator_padding = 5 5
 
 #-------------------------------------
+# Separator 3
+separator = new
+separator_background_id = 0
+separator_color = #aaffaa 100
+separator_style = empty
+separator_size = 1
+separator_padding = 5 5
+
+#-------------------------------------
 # Executor 1
+execp = new
+execp_command = ~/.config/tint2/Scripts/volume.sh
+execp_interval = 5
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 0
+execp_markup = 1
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = icofont 9
+execp_font_color = #aaffaa 100
+execp_padding = 0 0
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 2
 execp = new
 execp_command = ~/.config/tint2/Scripts/cpu_usage.sh
 execp_interval = 5
@@ -252,7 +283,7 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
-# Executor 2
+# Executor 3
 execp = new
 execp_command = ~/.config/tint2/Scripts/mem_usage.sh
 execp_interval = 5
