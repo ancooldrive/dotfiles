@@ -37,7 +37,7 @@
 	function getCpuUsage
 	{
 		#echo  $(echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')])%
-		echo " test"
+		echo  $(echo $[100-$(vmstat|tail -1|awk '{print $15}')])%
 	}
 	
 	
@@ -72,7 +72,7 @@
 
 #~ ---------------------------------------------------------------------
 #~ to color text use span
-#~ echo '<span foreground="red">text</span>'
+#~ echo '<span foreground="red" background="black">text</span>'
 #~ ---------------------------------------------------------------------
 
 separator='<span> </span><span> </span><span> </span><span> </span>'
