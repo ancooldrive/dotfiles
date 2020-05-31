@@ -44,7 +44,7 @@
 	#-------------------------------------------------------------------
 	function getNetworkMonitor
 	{
-		logfile="${XDG_CACHE_HOME:-$HOME/.cache}/netlog"
+		logfile=${HOME}/.cache/netlog
 		prevdata="$(cat "$logfile")"
 
 		rxcurrent="$(($(cat /sys/class/net/*/statistics/rx_bytes | paste -sd '+')))"
@@ -52,8 +52,8 @@
 
 		printf "\uea92%sKiB/s \uea95%sKiB/s\\n" "$(((rxcurrent-${prevdata%% *})/(1024*5)))" "$(((txcurrent-${prevdata##* })/(1024*5)))"
 			   
-		echo "$rxcurrent $txcurrent" > "$logfile"	
-
+		echo "$rxcurrent $txcurrent" > "$logfile"
+		
 	}
 	
 	#-------------------------------------------------------------------
