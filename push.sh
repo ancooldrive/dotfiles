@@ -9,6 +9,7 @@ repPath=${HOME}"/.git/dotfiles"
 configPath=${HOME}"/.config"
 configRepPath=${repPath}"/.config"
 
+rm -rf ${configRepPath}
 mkdir -p ${configRepPath}
 
 rsync -var --delete ${configPath}/tint2 ${configRepPath}
@@ -16,7 +17,6 @@ rsync -var --delete ${configPath}/openbox ${configRepPath}
 rsync -var --delete ${configPath}/pcmanfm ${configRepPath}
 rsync -var --delete ${configPath}/geany ${configRepPath}
 rsync -var --delete ${configPath}/alacritty ${configRepPath}
-rsync -var --delete ${configPath}/Atom ${configRepPath}
 rsync -var --delete ${configPath}/compton ${configRepPath}
 rsync -var --delete ${configPath}/gtk-2.0 ${configRepPath}
 rsync -var --delete ${configPath}/gtk-3.0 ${configRepPath}
@@ -29,6 +29,7 @@ rsync -var --delete ${configPath}/rofi ${configRepPath}
 localPath=${HOME}"/.local/share"
 localRepPath=${repPath}"/.local/share"
 
+rm -rf ${localRepPath}
 mkdir -p ${localRepPath}
 
 rsync -var --delete ${localPath}/rofi ${localRepPath}
@@ -51,5 +52,4 @@ cp ${HOME}/.xinitrc ${repPath}
 # ------------------------------------------------------------------------------
 
 git add -A
-git commit -m "C"
-git push
+git status
