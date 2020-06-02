@@ -51,4 +51,15 @@ cp ${repPath}/.bashrc ${HOME}
 cp ${repPath}/.gtkrc-2.0 ${HOME}
 cp ${repPath}/.xinitrc ${HOME}
 
+# installing flat-remix icons
+
+mkdir ${HOME}"/.icons" 2>/dev/null
+iconName="flat-remix"
+git -C ${repPath} clone https://github.com/daniruiz/${iconName}.git
+rm -rf ${HOME}/.icons/Flat-Remix-*
+mv ${repPath}/${iconName}/Flat-Remix-* ${HOME}"/.icons"
+rm -rf ${repPath}/${iconName}
+
+# --------------------------
+
 deleteLocalFiles
