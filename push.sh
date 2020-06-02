@@ -1,13 +1,14 @@
 # ------------------------------------------------------------------------------
+# LOAD CONFIG FILE
+# ------------------------------------------------------------------------------
+
+source ${HOME}"/.git/dotfiles/.repoScripts/config.sh"
+
+# ------------------------------------------------------------------------------
 # COPING FILES
 # ------------------------------------------------------------------------------
 
-repPath=${HOME}"/.git/dotfiles"
-
 # .config
-
-configPath=${HOME}"/.config"
-configRepPath=${repPath}"/.config"
 
 rm -rf ${configRepPath}
 mkdir -p ${configRepPath}
@@ -25,9 +26,6 @@ rsync -var --delete ${configPath}/nitrogen ${configRepPath}
 rsync -var --delete ${configPath}/rofi ${configRepPath}
 
 # .local
-
-localPath=${HOME}"/.local/share"
-localRepPath=${repPath}"/.local/share"
 
 rm -rf ${localRepPath}
 mkdir -p ${localRepPath}
@@ -52,6 +50,5 @@ cp ${HOME}/.xinitrc ${repPath}
 # ------------------------------------------------------------------------------
 # PUSHING TO GIT
 # ------------------------------------------------------------------------------
-
 git add -A
 git status
