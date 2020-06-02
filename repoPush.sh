@@ -22,6 +22,7 @@ function copyFiles
   rsync -var --delete ${configPath}/i3 ${configRepPath}
   rsync -var --delete ${configPath}/nitrogen ${configRepPath}
   rsync -var --delete ${configPath}/rofi ${configRepPath}
+  rsync -var --delete ${configPath}/st ${configRepPath}
 
   # .local
 

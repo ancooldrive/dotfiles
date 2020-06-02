@@ -25,6 +25,7 @@ rsync -var --delete ${configRepPath}/gtk-3.0 ${configPath}
 rsync -var --delete ${configRepPath}/i3 ${configPath}
 rsync -var --delete ${configRepPath}/nitrogen ${configPath}
 rsync -var --delete ${configRepPath}/rofi ${configPath}
+rsync -var --delete ${configRepPath}/st ${configPath}
 
 # .local
 
