@@ -30,6 +30,10 @@ function copyFiles
 
   rsync -var --delete ${localPath}/rofi ${localRepPath}
 
+  # .fonts
+
+  rsync -var --delete ${HOME}"/.fonts" ${repPath}
+
   # .themes
 
   rsync -var --delete ${HOME}"/.themes" ${repPath}
@@ -50,6 +54,7 @@ function deleteLocalFiles
 {
   rm -rf ${configRepPath}
   rm -rf ${repPath}"/.local"
+  rm -rf ${repPath}"/.fonts"
   rm -rf ${repPath}"/.themes"
   rm -rf ${repPath}"/.wallpapers"
 
