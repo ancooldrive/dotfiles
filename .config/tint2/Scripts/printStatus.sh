@@ -44,7 +44,12 @@
 	#-------------------------------------------------------------------
 	function getNetworkMonitor
 	{
+		mkdir ${HOME}"/.cache" 2> /dev/null
 		logfile=${HOME}/.cache/netlog
+
+		# create empty log if not exists
+		cat "$logfile"> /dev/null || echo "0 0" > "$logfile"
+
 		prevdata="$(cat "$logfile")"
 
 		rxcurrent="$(($(cat /sys/class/net/*/statistics/rx_bytes | paste -sd '+')))"
