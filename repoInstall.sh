@@ -4,6 +4,8 @@
 
 source ${HOME}"/.git/dotfiles/.repoScripts/config.sh"
 
+git -C ${repPath} reset --hard
+
 # ------------------------------------------------------------------------------
 # COPING FILES
 # ------------------------------------------------------------------------------
@@ -48,3 +50,5 @@ cp ${repPath}/.bash_profile ${HOME}
 cp ${repPath}/.bashrc ${HOME}
 cp ${repPath}/.gtkrc-2.0 ${HOME}
 cp ${repPath}/.xinitrc ${HOME}
+
+deleteLocalFiles

@@ -50,20 +50,6 @@ function copyFiles
   cp ${HOME}/.xinitrc ${repPath}
 }
 
-function deleteLocalFiles
-{
-  rm -rf ${configRepPath}
-  rm -rf ${repPath}"/.local"
-  rm -rf ${repPath}"/.fonts"
-  rm -rf ${repPath}"/.themes"
-  rm -rf ${repPath}"/.wallpapers"
-
-  rm ${repPath}/.bash_profile
-  rm ${repPath}/.bashrc
-  rm ${repPath}/.gtkrc-2.0
-  rm ${repPath}/.xinitrc
-}
-
 function gitPush
 {
   git -C ${repPath} add -A
