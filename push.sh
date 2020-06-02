@@ -36,9 +36,11 @@ rsync -var --delete ${localPath}/rofi ${localRepPath}
 
 # .themes
 
-themesPath=${HOME}"/.themes"
+rsync -var --delete ${HOME}"/.themes" ${repPath}
 
-rsync -var --delete ${themesPath} ${repPath}
+# .wallpapers
+
+rsync -var --delete ${HOME}"/.wallpapers" ${repPath}
 
 # home files
 
