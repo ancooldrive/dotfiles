@@ -79,5 +79,46 @@
 #~ echo '<span foreground="red" background="black">text</span>'
 #~ ---------------------------------------------------------------------
 
-separator='<span> </span><span> </span><span> </span><span> </span>'
-echo -e $(getVolume)${separator}$(getNetworkMonitor)${separator}$(getCpuUsage)${separator}$(getMemoryUsage)${separator}$(getDate)
+separator='<span> </span><span> </span><span> </span>'
+
+output='<span foreground="#282a36"></span>'
+output=${output}'<span foreground="#f8f8f2" background="#282a36">'
+output=${output}'<span> </span>'
+output=${output}$(getVolume)
+output=${output}'<span> </span>'
+output=${output}'</span>'
+
+output=${output}'<span foreground="#6272a4" background="#282a36"></span>'
+output=${output}'<span foreground="#f8f8f2" background="#6272a4">'
+output=${output}'<span> </span>'
+output=${output}$(getNetworkMonitor)
+output=${output}'<span> </span>'
+output=${output}'</span>'
+
+output=${output}'<span foreground="#bd93f9" background="#6272a4"></span>'
+output=${output}'<span foreground="#f8f8f2" background="#bd93f9">'
+output=${output}'<span> </span>'
+output=${output}$(getCpuUsage)
+output=${output}'<span> </span>'
+output=${output}'</span>'
+
+output=${output}'<span foreground="#ffb86c" background="#bd93f9"></span>'
+output=${output}'<span foreground="#282a36" background="#ffb86c">'
+output=${output}'<span> </span>'
+output=${output}$(getMemoryUsage)
+output=${output}'<span> </span>'
+output=${output}'</span>'
+
+output=${output}'<span foreground="#f8f8f2" background="#ffb86c"></span>'
+output=${output}'<span foreground="#282a36" background="#f8f8f2">'
+output=${output}'<span> </span>'
+output=${output}$(getDate)
+output=${output}'<span> </span>'
+output=${output}'</span>'
+
+echo ${output}
+
+# echo '<span foreground="#bd93f9"></span><span foreground="#f8f8f2" background="#bd93f9">text</span>'
+
+#separator='<span> </span><span> </span><span> </span><span> </span>'
+#echo -e $(getVolume)${separator}$(getNetworkMonitor)${separator}$(getCpuUsage)${separator}$(getMemoryUsage)${separator}$(getDate)

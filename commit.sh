@@ -33,7 +33,7 @@ function copyFiles
 
   # .fonts
 
-  rsync -var --delete ${HOME}"/.fonts" ${repPath}
+  rsync -var --delete ${localPath}/fonts ${localRepPath}
 
   # .themes
 

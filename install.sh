@@ -35,7 +35,7 @@ rsync -var --delete ${localRepPath}/rofi ${localPath}
 
 # .fonts
 
-rsync -var --delete ${repPath}"/.fonts" ${HOME}
+rsync -var --delete ${localRepPath}/fonts ${localPath}
 
 # .themes
 
