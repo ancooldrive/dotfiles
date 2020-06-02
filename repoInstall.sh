@@ -32,7 +32,7 @@ mkdir -p ${localPath}
 
 rsync -var --delete ${localRepPath}/rofi ${localPath}
 
-# .themes
+# .fonts
 
 rsync -var --delete ${repPath}"/.fonts" ${HOME}
 
