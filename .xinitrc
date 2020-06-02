@@ -1,3 +1,5 @@
+setxkbmap pl
+
 #exec openbox-session
 
 
