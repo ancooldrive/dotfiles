@@ -52,3 +52,9 @@ cp ${HOME}/.xinitrc ${repPath}
 # ------------------------------------------------------------------------------
 git add -A
 git status
+
+read -p "Commit? [Y/n]: " doCommit
+if [ "$doCommit" == "Y" ] || [ "$doCommit" == "" ]; then
+  git commit -m "c"
+  git push
+fi
