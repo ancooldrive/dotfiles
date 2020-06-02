@@ -189,7 +189,11 @@ static uint forcemousemod = ShiftMask;
  	/* mask                 button   function        argument       release */
   { ShiftMask,            Button4, kscrollup,      {.i = 5} },
  	{ ShiftMask,            Button5, kscrolldown,    {.i = 5} },
- 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+
+	{ ControlMask,           Button4, zoom,        {.f = +1} },
+ 	{ ControlMask,           Button5, zoom,        {.f = -1} },
+
+	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
  	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
  	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
@@ -204,8 +208,8 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	// { TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+	// { TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
