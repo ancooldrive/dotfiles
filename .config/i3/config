@@ -189,10 +189,9 @@ bar {
         i3bar_command i3bar --transparency
 
         tray_output none
-
         font pango: Inconsolata, FontAwesome 10
-
         height 16
+
         colors {
           background #00000000
         }

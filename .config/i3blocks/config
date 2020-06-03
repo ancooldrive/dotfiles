@@ -10,7 +10,6 @@ separator_block_width=0
 command=~/.local/share/scripts/statusBar.sh -i3status
 interval=5
 
-
 # [network]
 # command=echo '<span background="#E5E9F0" foreground="#EBCB8B">&#xE0B2;</span><span font="system-ui" background="#EBCB8B" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -network)  '</span>'
 # interval=5

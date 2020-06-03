@@ -80,9 +80,9 @@
 case $1 in
   "-volume")
 		case $2 in
-			"1") $(pamixer -i 10) ;;
+			"1") $(pamixer -d 10) ;;
 			"2") $(pamixer -t) 	  ;;
-			"3") $(pamixer -d 10) ;;
+			"3") $(pamixer -i 10) ;;
 		esac
     echo $(getVolume)
     exit
