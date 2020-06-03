@@ -23,6 +23,7 @@ function copyFiles
   rsync -var --delete ${configPath}/nitrogen ${configRepPath}
   rsync -var --delete ${configPath}/rofi ${configRepPath}
   rsync -var --delete ${configPath}/st ${configRepPath}
+  rsync -var --delete ${configPath}/nano ${configRepPath}
 
   # .local
 
@@ -49,6 +50,7 @@ function copyFiles
   cp ${HOME}/.bashrc ${repPath}
   cp ${HOME}/.gtkrc-2.0 ${repPath}
   cp ${HOME}/.xinitrc ${repPath}
+  cp ${HOME}/.nanorc ${repPath}
 }
 
 function gitPush

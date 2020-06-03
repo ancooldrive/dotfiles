@@ -210,9 +210,9 @@ for_window [class=".*"] border pixel 2
 
 #                                                 split
 # colors                                          line    border
-client.focused	 	        #ffffff #ffffff #ffffff #bd93f9 #bd93f9
-client.focused_inactive   #ffffff #ffffff #ffffff #6272a4 #6272a4
-client.unfocused 	        #ffffff #ffffff #ffffff #6272a4 #6272a4
+client.focused	 	        #bd93f9 #282A36 #f8f8f2 #bd93f9 #bd93f9
+client.focused_inactive   #ffffff #ffffff #282A36 #6272a4 #6272a4
+client.unfocused 	        #282A36 #282A36 #f8f8f2 #6272a4 #6272a4
 
 
 # gaps

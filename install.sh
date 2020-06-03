@@ -26,6 +26,7 @@ rsync -var --delete ${configRepPath}/i3 ${configPath}
 rsync -var --delete ${configRepPath}/nitrogen ${configPath}
 rsync -var --delete ${configRepPath}/rofi ${configPath}
 rsync -var --delete ${configRepPath}/st ${configPath}
+rsync -var --delete ${configRepPath}/nano ${configPath}
 
 # .local
 
@@ -51,6 +52,7 @@ cp ${repPath}/.bash_profile ${HOME}
 cp ${repPath}/.bashrc ${HOME}
 cp ${repPath}/.gtkrc-2.0 ${HOME}
 cp ${repPath}/.xinitrc ${HOME}
+cp ${repPath}/.nanorc ${HOME}
 
 # installing flat-remix icons
 
