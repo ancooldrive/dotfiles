@@ -1,0 +1,17 @@
+markup=pango
+
+[click]
+command=echo '<span font="9" foreground="#6272a4"></span><span font="system-ui 9" background="#6272a4" foreground="#f8f8f2">'   785M '</span>'
+interval=5
+separator=false
+separator_block_width=0
+
+[click]
+command=echo '<span font="9" background="#6272a4" foreground="#ffb86c"></span><span font="system-ui 9" background="#ffb86c" foreground="#282a36">'13% '</span>'
+interval=5
+separator=false
+separator_block_width=0
+
+[simple]
+command=echo '<span font="9" background="#ffb86c" foreground="#f8f8f2"></span><span font="system-ui 9" background="#f8f8f2" foreground="#282a36">'"$(date +'%A %d %B %Y, %H:%M')" '</span>'
+interval=5

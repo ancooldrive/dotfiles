@@ -20,6 +20,7 @@ function copyFiles
   rsync -var --delete ${configPath}/gtk-2.0 ${configRepPath}
   rsync -var --delete ${configPath}/gtk-3.0 ${configRepPath}
   rsync -var --delete ${configPath}/i3 ${configRepPath}
+  rsync -var --delete ${configPath}/i3blocks ${configRepPath}
   rsync -var --delete ${configPath}/nitrogen ${configRepPath}
   rsync -var --delete ${configPath}/rofi ${configRepPath}
   rsync -var --delete ${configPath}/st ${configRepPath}
