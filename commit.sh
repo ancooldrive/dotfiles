@@ -32,6 +32,7 @@ function copyFiles
   mkdir -p ${localRepPath}
 
   rsync -var --delete ${localPath}/rofi ${localRepPath}
+  rsync -var --delete ${localPath}/scripts ${localRepPath}
 
   # .fonts
 

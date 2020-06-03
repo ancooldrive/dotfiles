@@ -1,3 +1,8 @@
+# require programs
+#
+# pamixer
+
+
 # ------------------------------------------------------------------------------
 # LOAD CONFIG FILE
 # ------------------------------------------------------------------------------
@@ -34,6 +39,7 @@ rsync -var --delete ${configRepPath}/nano ${configPath}
 mkdir -p ${localPath}
 
 rsync -var --delete ${localRepPath}/rofi ${localPath}
+rsync -var --delete ${localRepPath}/scripts ${localPath}
 
 # .fonts
 
