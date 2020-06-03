@@ -6,24 +6,29 @@ interval=5
 separator=false
 separator_block_width=0
 
-[network]
-command=echo '<span background="#E5E9F0" foreground="#EBCB8B">&#xE0B2;</span><span font="system-ui" background="#EBCB8B" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -network)  '</span>'
+[status]
+command=~/.local/share/scripts/statusBar.sh -i3status
 interval=5
-separator=false
-separator_block_width=0
 
-[cpu]
-command=echo '<span background="#EBCB8B" foreground="#A3BE8C">&#xE0B2;</span><span font="system-ui" background="#A3BE8C" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -cpu)  '</span>'
-interval=5
-separator=false
-separator_block_width=0
 
-[ram]
-command=echo '<span background="#A3BE8C" foreground="#88C0D0">&#xE0B2;</span><span font="system-ui" background="#88C0D0" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -ram)  '</span>'
-interval=5
-separator=false
-separator_block_width=0
-
-[datetime]
-command=echo '<span background="#88C0D0" foreground="#3B4252">&#xE0B2;</span><span font="system-ui" background="#3B4252" foreground="#E5E9F0">'"&#xeedc;" "$(date +'%A %d %B %Y, %H:%M')" '</span>'
-interval=5
+# [network]
+# command=echo '<span background="#E5E9F0" foreground="#EBCB8B">&#xE0B2;</span><span font="system-ui" background="#EBCB8B" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -network)  '</span>'
+# interval=5
+# separator=false
+# separator_block_width=0
+#
+# [cpu]
+# command=echo '<span background="#EBCB8B" foreground="#A3BE8C">&#xE0B2;</span><span font="system-ui" background="#A3BE8C" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -cpu)  '</span>'
+# interval=5
+# separator=false
+# separator_block_width=0
+#
+# [ram]
+# command=echo '<span background="#A3BE8C" foreground="#88C0D0">&#xE0B2;</span><span font="system-ui" background="#88C0D0" foreground="#3B4252">'$(~/.local/share/scripts/statusBar.sh -ram)  '</span>'
+# interval=5
+# separator=false
+# separator_block_width=0
+#
+# [datetime]
+# command=echo '<span background="#88C0D0" foreground="#3B4252">&#xE0B2;</span><span font="system-ui" background="#3B4252" foreground="#E5E9F0">'"&#xeedc;" "$(date +'%A %d %B %Y, %H:%M')" '</span>'
+# interval=5

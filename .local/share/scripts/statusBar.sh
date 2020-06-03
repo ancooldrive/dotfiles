@@ -103,6 +103,14 @@ case $1 in
     echo $(getDate)
     exit
   ;;
+	"-i3status")
+		output='<span background="#E5E9F0" foreground="#EBCB8B">&#xE0B2;</span><span font="system-ui" background="#EBCB8B" foreground="#3B4252">'$(getNetworkMonitor)"  "'</span>'
+		output=${output}'<span background="#EBCB8B" foreground="#A3BE8C">&#xE0B2;</span><span font="system-ui" background="#A3BE8C" foreground="#3B4252">'$(getCpuUsage)"  "'</span>'
+		output=${output}'<span background="#A3BE8C" foreground="#88C0D0">&#xE0B2;</span><span font="system-ui" background="#88C0D0" foreground="#3B4252">'$(getMemoryUsage)"  "'</span>'
+		output=${output}'<span background="#88C0D0" foreground="#3B4252">&#xE0B2;</span><span font="system-ui" background="#3B4252" foreground="#E5E9F0">'"&#xeedc; "$(date +'%A %d %B %Y, %H:%M')"  "'</span>'
+		echo ${output}
+		exit
+	;;
 esac
 
 # separator='<span> </span><span> </span><span> </span>'
