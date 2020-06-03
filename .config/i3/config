@@ -41,7 +41,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 floating_modifier Mod1
 
 # start a terminal
-bindsym $mod+Return exec st
+#bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -191,6 +191,7 @@ bindsym $mod+r mode "resize"
 # ------------------------------------------------------------------------------
 
 # my shortcuts
+bindsym $mod+Return exec alacritty
 bindsym Mod1+Return exec rofi -show run
 bindsym $mod+Shift+w exec firefox
 
