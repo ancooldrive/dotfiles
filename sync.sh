@@ -136,8 +136,9 @@ case $1 in
     *)
         echo HELP
         echo 
-        echo -C commit files to git repository
-        echo -S pull files from git and synchronize local files
+        echo -commit \"commit files to git repository\"
+        echo -install \"pull files from git and synchronize local files\"
+        echo -r \"clear temp files\"
         echo 
     ;;
 esac
