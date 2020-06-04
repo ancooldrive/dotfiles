@@ -68,7 +68,7 @@ function Commit
 
     git -C ${repPath} add -A
     # check if modified
-    if [ "$(echo $(git -C ${repPath} status) | grep "no changes")" == "" ]; then
+    if [ "$(echo $(git -C ${repPath} status) | grep "nothing to commit, working tree clean")" == "" ]; then
         modified=true
     else
         modified=false
