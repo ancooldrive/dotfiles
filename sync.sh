@@ -30,23 +30,6 @@ ConfigArray=(
     ~/.nanorc
 )
 
-function SyncInternal
-{
-    formatHome=$(echo ${HOME} | sed 's_/_\\/_g')
-    formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
-    for i in "${ConfigArray[@]}"
-    do
-        if [ -f "${i}" ]; 
-        then
-            $(cp ${i} ${repPath}) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
-        else
-            current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
-            mkdir -p ${current}
-            $(rsync -ar --delete ${i}/ ${current}/) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
-        fi
-    done
-}
-
 function ClearTempFiles
 {
     formatHome=$(echo ${HOME}/ | sed 's_/_\\/_g')
@@ -64,11 +47,27 @@ function ClearTempFiles
     done
 }
 
-function Commit
+function SyncRemote
 {
-    SyncInternal
+    # coping files from main path to rep
+
+    formatHome=$(echo ${HOME} | sed 's_/_\\/_g')
+    formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
+    for i in "${ConfigArray[@]}"
+    do
+        if [ -f "${i}" ]; 
+        then
+            $(cp ${i} ${repPath}) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
+        else
+            current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
+            mkdir -p ${current}
+            $(rsync -ar --delete ${i}/ ${current}/) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
+        fi
+    done
+
 
     # check if modified
+
     if [ -n "$(git -C ${repPath} status --porcelain)" ]; 
     then
         git -C ${repPath} add -A
@@ -83,12 +82,57 @@ function Commit
         echo $(tput setaf 2)No files to update$(tput sgr0)   
     fi
 
+
+    # clear 
+
+    ClearTempFiles
+}
+
+function SyncLokal
+{
+    # pull files from git
+
+    git -C ${repPath} reset --hard
+    git -C ${repPath} pull
+
+
+    # coping files from rep to main path
+
+    formatHome=$(echo ${HOME} | sed 's_/_\\/_g')
+    formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
+    for i in "${ConfigArray[@]}"
+    do
+        current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
+
+        if [ -f "${current}" ]; 
+        then
+            $(cp ${current} ${i}) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
+        else
+            mkdir -p ${i}
+            $(rsync -ar --delete ${current}/ ${i}/) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
+        fi
+    done
+
+
+    # installing flat-remix icons
+
+    mkdir ${HOME}"/.icons" 2>/dev/null
+    iconName="flat-remix"
+    git -C ${repPath} clone https://github.com/daniruiz/${iconName}.git
+    rm -rf ${HOME}/.icons/Flat-Remix-*
+    mv ${repPath}/${iconName}/Flat-Remix-* ${HOME}"/.icons"
+    rm -rf ${repPath}/${iconName}
+
+
+    # clear 
+
     ClearTempFiles
 }
 
 case $1 in
-    "-C") Commit ;;
-    "-R") ClearTempFiles ;;
+    "-commit") SyncRemote ;;
+    "-install") SyncLocal ;;
+    "-r") ClearTempFiles ;;
     *)
         echo HELP
         echo 
