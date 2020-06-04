@@ -88,7 +88,7 @@ function SyncRemote
     ClearTempFiles
 }
 
-function SyncLokal
+function SyncLocal
 {
     # pull files from git
 
