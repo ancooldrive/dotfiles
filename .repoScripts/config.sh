@@ -64,3 +64,53 @@ function deleteLocalFiles
   rm ${repPath}/.xinitrc
   rm ${repPath}/.nanorc
 }
+
+
+
+TestconfigArray=(
+                 # configs
+                 ~/.config/tint2
+                 ~/.config/openbox
+                 ~/.config/pcmanfm
+                 ~/.config/geany
+                 ~/.config/alacritty
+                 ~/.config/compton
+                 ~/.config/gtk-2.0
+                 ~/.config/gtk-3.0
+                 ~/.config/i3
+                 ~/.config/i3blocks
+                 ~/.config/nitrogen
+                 ~/.config/rofi
+                 ~/.config/st
+                 ~/.config/nano
+                 # local
+                 ~/.local/share/rofi
+                 ~/.local/share/scripts
+                 ~/.local/share/fonts
+                 # dotfiles
+                ~/.themes
+                ~/.wallpapers
+                ~/.bash_profile
+                ~/.bashrc
+                ~/.gtkrc-2.0
+                ~/.xinitrc
+                ~/.nanorc)
+
+function TestrsyncInternal
+{
+ array=("$@")
+ formatHome=$(echo ${HOME} | sed 's_/_\\/_g')
+ formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
+ for i in "${array[@]}"
+ do
+   if [ -f "${i}" ]; then
+     echo $(cp ${i} ${repPath})
+   else
+     current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
+     mkdir -p ${current}
+     echo $(rsync -var --delete ${i}/ ${current}/)
+   fi
+ done
+}
+
+#TestrsyncInternal "${TestconfigArray[@]}"
