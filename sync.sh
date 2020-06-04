@@ -36,7 +36,8 @@ function SyncInternal
     formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
     for i in "${ConfigArray[@]}"
     do
-        if [ -f "${i}" ]; then
+        if [ -f "${i}" ]; 
+        then
             $(cp ${i} ${repPath}) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
         else
             current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
@@ -54,11 +55,12 @@ function ClearTempFiles
     do
         temp=${repPath}/$(echo ${i} | sed 's/'${formatHome}'// ; s/\/.*//')
 
-    if [ -f "${temp}" ]; then
-        $(rm ${temp})
-    else
-        $(rm -rf ${temp})
-    fi
+        if [ -f "${temp}" ]; 
+        then
+            $(rm ${temp})
+        else
+            $(rm -rf ${temp})
+        fi
     done
 }
 
@@ -74,10 +76,12 @@ function Commit
         modified=false
     fi
     # -----------------
-    if [ ${modified} ]; then
+    if [ ${modified} = true ]; 
+    then
         git -C ${repPath} status
         read -p "Commit? [Y/n]: " doCommit
-        if [ "$doCommit" == "Y" ] || [ "$doCommit" == "" ]; then
+        if [ "$doCommit" == "Y" ] || [ "$doCommit" == "" ]; 
+        then
             git -C ${repPath} commit -m "c"
             git -C ${repPath} push
         fi
