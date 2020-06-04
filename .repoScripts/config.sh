@@ -65,8 +65,6 @@ function deleteLocalFiles
   rm ${repPath}/.nanorc
 }
 
-
-
 TestconfigArray=(
   # configs
   ~/.config/tint2
