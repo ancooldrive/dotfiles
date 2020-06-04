@@ -68,10 +68,10 @@ function Commit
 {
     SyncInternal
 
-    git -C ${repPath} add -A
     # check if modified
     if [ -n "$(git -C ${repPath} status --porcelain)" ]; 
     then
+        git -C ${repPath} add -A
         git -C ${repPath} status
         read -p "Commit? [Y/n]: " doCommit
         if [ "$doCommit" == "Y" ] || [ "$doCommit" == "" ]; 
