@@ -103,13 +103,46 @@ function TestrsyncInternal
   for i in "${array[@]}"
   do
     if [ -f "${i}" ]; then
-      echo $(cp ${i} ${repPath})
+      $(cp ${i} ${repPath}) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
     else
       current=$(echo ${i} | sed 's/'${formatHome}'/'${formatRepo}'/')
       mkdir -p ${current}
-      echo $(rsync -var --delete ${i}/ ${current}/)
+      $(rsync -ar --delete ${i}/ ${current}/) && echo $(tput setaf 2)Synchronized$(tput sgr0): ${i}
     fi
   done
 }
 
+function TestClearTempFiles
+{
+  array=("$@")
+  formatHome=$(echo ${HOME}/ | sed 's_/_\\/_g')
+  formatRepo=$(echo ${repPath} | sed 's_/_\\/_g')
+  for i in "${array[@]}"
+  do
+    temp=${repPath}/$(echo ${i} | sed 's/'${formatHome}'// ; s/\/.*//')
+
+    if [ -f "${temp}" ]; then
+      $(rm ${temp})
+    else
+      $(rm -rf ${temp})
+    fi
+  done
+}
+
+case $1 in
+  "-S")
+    TestrsyncInternal "${TestconfigArray[@]}"
+  ;;
+  "-R")
+    TestClearTempFiles "${TestconfigArray[@]}"
+  ;;
+esac
+
 #TestrsyncInternal "${TestconfigArray[@]}"
+#TestClearTempFiles "${TestconfigArray[@]}"
+
+# if [[ $1 =~ [0-9] ]]; then
+#   echo "yes"
+# else
+#   echo "no"
+# fi
