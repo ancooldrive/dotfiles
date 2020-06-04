@@ -70,13 +70,7 @@ function Commit
 
     git -C ${repPath} add -A
     # check if modified
-    if [ "$(echo $(git -C ${repPath} status) | grep "nothing to commit, working tree clean")" == "" ]; then
-        modified=true
-    else
-        modified=false
-    fi
-    # -----------------
-    if [ ${modified} = true ]; 
+    if [ -n "$(git -C ${repPath} status --porcelain)" ]; 
     then
         git -C ${repPath} status
         read -p "Commit? [Y/n]: " doCommit
