@@ -225,6 +225,11 @@ bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
 bindsym $mod+Mod1+Up fullscreen toggle
 
 
+
+#for_window [class=".*"] floating enable
+
+
+
 # border
 for_window [class=".*"] border pixel 2
 
