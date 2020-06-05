@@ -92,6 +92,7 @@ function SyncLocal
 {
     # pull files from git
 
+    git -C checkout master
     git -C ${repPath} reset --hard
     git -C ${repPath} pull
 
