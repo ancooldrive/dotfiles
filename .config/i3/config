@@ -182,12 +182,12 @@ bindsym $mod+Shift+r restart
 
 # logout mode ------------------------
 
-mode "logout (press Return to exit)" 
+mode "logout (Return = logout) (Esc = cancel)" 
 {
         bindsym Escape mode "default"
         bindsym Return exec "i3-msg exit"
 }
-bindsym $mod+Control+l mode "logout (press Return to exit)"
+bindsym $mod+Control+l mode "logout (Return = logout) (Esc = cancel)"
 # ------------------------------------
 
 
@@ -195,7 +195,7 @@ bindsym $mod+Control+l mode "logout (press Return to exit)"
 # finds out, if available)
 bar {
         # status_command i3status
-        status_command i3blocks
+        status_command i3blocks -c ~/.config/i3blocks/config
         i3bar_command i3bar --transparency
 
         tray_output none
