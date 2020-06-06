@@ -36,7 +36,7 @@
 	#todo
 	function getCpuUsage
 	{
-		echo  $(echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')])%
+		echo "&#xf2db;" $(echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')])%
 		#echo  $(echo $[100-$(vmstat|tail -1|awk '{print $15}')])%
 	}
 
@@ -55,7 +55,7 @@
 		rxcurrent="$(($(cat /sys/class/net/*/statistics/rx_bytes | paste -sd '+')))"
 		txcurrent="$(($(cat /sys/class/net/*/statistics/tx_bytes | paste -sd '+')))"
 
-		printf "\uea92%sKiB/s \uea95%sKiB/s\\n" "$(((rxcurrent-${prevdata%% *})/(1024*5)))" "$(((txcurrent-${prevdata##* })/(1024*5)))"
+		printf "&#xf309;%sKiB/s &#xf30c;%sKiB/s\\n" "$(((rxcurrent-${prevdata%% *})/(1024*5)))" "$(((txcurrent-${prevdata##* })/(1024*5)))"
 
 		echo "$rxcurrent $txcurrent" > "$logfile"
 	}
@@ -92,6 +92,13 @@ function addPowerLineBlock
 }
 
 #~ ---------------------------------------------------------------------
+
+function addPowerLineNetwork
+{
+	grep "up" /sys/class/net/*/operstate &>/dev/null \
+		&& addPowerLineBlock "#EBCB8B" "#3B4252" "$(getNetworkMonitor)" \
+		|| addPowerLineBlock "#bf616a" "#2b303b" " &#xf071; down"
+}
 
 #~ ---------------------------------------------------------------------
 #~ to color text use span
@@ -135,12 +142,22 @@ case $1 in
 	"-i3status")
 		powerLine=""
 		powerLineFirstBackgroundColor="#E5E9F0"
-		addPowerLineBlock "#EBCB8B" "#3B4252" "$(getNetworkMonitor)"
 		addPowerLineBlock "#A3BE8C" "#3B4252" "$(getCpuUsage)"
-		addPowerLineBlock "#88C0D0" "#3B4252" "$(getMemoryUsage)"
+		addPowerLineBlock "#b48ead" "#3B4252" "$(getMemoryUsage)"
+		addPowerLineNetwork
 		addPowerLineBlock "#3B4252" "#E5E9F0" "&#xeedc; $(date +'%A %d %B %Y, %H:%M')"
 		echo ${powerLine}
 		exit
+	;;
+	"-test")
+		grep "up" /sys/class/net/*/operstate &>/dev/null && up=1 || up=0
+
+		if [ ${up} = 1 ]
+		then
+			echo "up"
+		else
+			echo "down"
+		fi
 	;;
 esac
 
