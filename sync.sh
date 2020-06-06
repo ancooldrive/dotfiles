@@ -11,7 +11,6 @@ ConfigArray=(
     ~/.config/gtk-3.0
     ~/.config/i3
     ~/.config/i3blocks
-    ~/.config/nitrogen
     ~/.config/rofi
     ~/.config/st
     ~/.config/nano
