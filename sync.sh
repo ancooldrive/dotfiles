@@ -141,3 +141,63 @@ case $1 in
         echo 
     ;;
 esac
+
+
+
+
+
+
+
+
+
+
+
+exit
+
+
+# checking if require packages is installed
+
+
+function check_package
+{
+    pacman -Q ${1} &>/dev/null && return 0 || return 1
+}
+
+function print_status
+{
+    [ ${1} = 0 ] && foreground=2 || foreground=1
+    echo $(tput setaf ${foreground})$2$(tput sgr0)
+    return 0
+}
+
+function print_check_package
+{
+    $(check_package ${1}) && msg="Installed" result=0 || msg="Not found" result=1
+    
+    printf $1%$((20-${#1}))s | tr " " "."
+    echo $(print_status ${result} "${msg}")
+
+    return ${result}
+}
+
+require_packages=(
+    git
+    rsync
+)
+
+function check_require_packages
+{
+    status=0
+    for package in "${require_packages[@]}"
+    do
+        print_check_package ${package}
+        local test=$?
+        [ ${test} = 0 ] || status=1
+    done;
+    return ${status}
+}
+
+# check_require_packages || echo -e $(tput setaf 1)"\ninstalation terminated."$(tput sgr0) 
+# exit
+
+# echo instalation
