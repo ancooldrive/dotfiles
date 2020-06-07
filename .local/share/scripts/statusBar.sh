@@ -97,7 +97,7 @@ function addPowerLineNetwork
 {
 	grep "up" /sys/class/net/*/operstate &>/dev/null \
 		&& addPowerLineBlock "#EBCB8B" "#3B4252" "$(getNetworkMonitor)" \
-		|| addPowerLineBlock "#bf616a" "#2b303b" " &#xf071; down"
+		|| addPowerLineBlock "#bf616a" "#2b303b" " &#xf071; Brak połączenia"
 }
 
 #~ ---------------------------------------------------------------------
@@ -145,7 +145,7 @@ case $1 in
 		addPowerLineBlock "#A3BE8C" "#3B4252" "$(getCpuUsage)"
 		addPowerLineBlock "#b48ead" "#3B4252" "$(getMemoryUsage)"
 		addPowerLineNetwork
-		addPowerLineBlock "#3B4252" "#E5E9F0" "&#xeedc; $(date +'%A %d %B %Y, %H:%M')"
+		addPowerLineBlock "#3B4252" "#E5E9F0" "&#xeedc; $(echo $(date +'%A %d %B %Y, %H:%M') | sed 's/ 0/ /')"
 		echo ${powerLine}
 		exit
 	;;
