@@ -4,6 +4,7 @@ ConfigArray=(
     # configs
     ~/.config/tint2
     ~/.config/openbox
+    ~/.config/awesome
     ~/.config/geany
     ~/.config/alacritty
     ~/.config/compton
