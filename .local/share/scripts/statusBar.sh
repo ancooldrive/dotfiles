@@ -100,6 +100,18 @@ function addPowerLineNetwork
 		|| addPowerLineBlock "#bf616a" "#2b303b" " &#xf071; Brak połączenia"
 }
 
+function addPowerLineCheckUpdates
+{
+	count=$(cat /var/cache/pacman/checkupdate_log 2>/dev/null | wc -l)
+	if [ ${count} = 0 ];
+	then
+		content='<span foreground="green">&#xf058;</span> up to date'
+	else
+		content='<span foreground="red">&#xf1b2;</span> '${count}' packages to update'
+	fi
+	addPowerLineBlock "#E5E9F0" "#3B4252" "${content}"
+}
+
 #~ ---------------------------------------------------------------------
 #~ to color text use span
 #~ echo '<span foreground="red" background="black">text</span>'
@@ -149,15 +161,20 @@ case $1 in
 		echo ${powerLine}
 		exit
 	;;
+	"-all")
+		powerLine=""
+		addPowerLineCheckUpdates
+		addPowerLineBlock "#88c0d0" "#3B4252" "$(getVolume)"
+		addPowerLineBlock "#A3BE8C" "#3B4252" "$(getCpuUsage)"
+		addPowerLineBlock "#b48ead" "#3B4252" "$(getMemoryUsage)"
+		addPowerLineNetwork
+		addPowerLineBlock "#3B4252" "#E5E9F0" "&#xeedc; $(echo $(date +'%A %d %B %Y, %H:%M') | sed 's/ 0/ /')"
+		echo ${powerLine}
+		exit
+	;;
 	"-test")
-		grep "up" /sys/class/net/*/operstate &>/dev/null && up=1 || up=0
-
-		if [ ${up} = 1 ]
-		then
-			echo "up"
-		else
-			echo "down"
-		fi
+		echo "test"
+		exit
 	;;
 esac
 

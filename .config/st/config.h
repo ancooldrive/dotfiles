@@ -5,16 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-
-static char *font = "Source Code Pro:Regular:pixelsize=15:antialias=true:autohint=true";
-//static char *font = "Roboto Mono:Regular:pixelsize=14:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
-	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
-};
-
-static int borderpx = 10;
+static char *font = "Source code pro:pixelsize=14:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -51,18 +43,9 @@ static unsigned int tripleclicktimeout = 600;
 /* alt screens */
 int allowaltscreen = 1;
 
-/* allow certain non-interactive (insecure) window operations such as:
-   setting the clipboard text */
-int allowwindowops = 0;
-
-/*
- * draw latency range in ms - from new content/keypress/etc until drawing.
- * within this range, st draws when content stops arriving (idle). mostly it's
- * near minlatency, but it waits longer for slow updates to avoid partial draw.
- * low minlatency will tear/flicker more, as it can "detect" idle too early.
- */
-static double minlatency = 8;
-static double maxlatency = 33;
+/* frames per second st should at maximum draw to the screen */
+static unsigned int xfps = 120;
+static unsigned int actionfps = 30;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -185,17 +168,11 @@ static uint forcemousemod = ShiftMask;
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
- static MouseShortcut mshortcuts[] = {
- 	/* mask                 button   function        argument       release */
-  { ShiftMask,            Button4, kscrollup,      {.i = 5} },
- 	{ ShiftMask,            Button5, kscrolldown,    {.i = 5} },
-
-	{ ControlMask,           Button4, zoom,        {.f = +1} },
- 	{ ControlMask,           Button5, zoom,        {.f = -1} },
-
+static MouseShortcut mshortcuts[] = {
+	/* mask                 button   function        argument       release */
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
- 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
- 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -208,19 +185,14 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	// { TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	// { TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-
-  { ShiftMask,            XK_Up,          kscrollup,      {.i =  5} },
-  { ShiftMask,            XK_Down,        kscrolldown,    {.i =  5} },
-  { ShiftMask,            XK_Page_Up,     kscrollup,      {.i =  15} },
-  { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i =  15} },
 };
 
 /*
