@@ -10,6 +10,7 @@ local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
+local naughty = require("naughty")
 
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -107,6 +108,101 @@ local status = awful.widget.watch(
     end
 )
 
+-- status:buttons(
+--     awful.button({ }, 1, function() showRatesPopup() end)
+-- )
+
+-- function showRatesPopup()   
+--     naughty.notify(
+--         {
+--             title = "Achtung!", 
+--             text = "You're idling", 
+--             timeout = 10
+--         }
+--     )
+-- end
+
+-- local button = wibox.widget{
+--     markup = 'This <i>is</i> a <b>textbox</b>!!!',
+--     align  = 'center',
+--     valign = 'center',
+--     widget = wibox.widget.textbox
+-- }
+-- button:buttons(
+--     awful.button({ }, 1, function() showRatesPopup() end)
+-- )
+-- button:connect_signal("mouse::enter", function()
+--     -- Hm, no idea how to get the wibox from this signal's arguments...
+--     -- local w = mouse.current_wibox
+--     button:set_markup("mouse:enter")
+-- end)
+-- button:connect_signal("mouse::leave", function()
+--     local w = mouse.current_wibox
+--     button:set_markup("mouse:leave")
+-- end)
+
+
+
+
+
+
+
+-- local mybatterybar = wibox.widget {
+--     {
+--         min_value    = 0,
+--         max_value    = 100,
+--         value        = 0,
+--         paddings     = 1,
+--         border_width = 1,
+--         forced_width = 50,
+--         border_color = "#0000ff",
+--         id           = "mypb",
+--         widget       = wibox.widget.progressbar,
+--     },
+--     {
+--         id           = "mytb",
+--         text         = "100%",
+--         widget       = wibox.widget.textbox,
+--     },
+--     layout      = wibox.layout.stack,
+--     set_battery = function(self, val)
+--         self.mytb.text  = tonumber(val).."%"
+--         self.mypb.value = tonumber(val)
+--     end,
+-- }
+
+-- gears.timer {
+--     timeout   = 10,
+--     call_now  = true,
+--     autostart = true,
+--     callback  = function()
+--         -- You should read it from `/sys/class/power_supply/` (on Linux)
+--         -- instead of spawning a shell. This is only an example.
+--         awful.spawn.easy_async(
+--             "pamixer --get-volume",
+--             function(out)
+--                 mybatterybar.battery = out
+--             end
+--         )
+--     end
+-- }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 local test     = wibox.widget.textbox('test123')
 test:set_markup('<span foreground="red">test</span>')
 
@@ -162,6 +258,8 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            -- button,
+            -- mybatterybar,
             status,
             separators.arrow_left("#3B4252", "black"),
             wibox.container.background(s.mylayoutbox, black),
