@@ -67,8 +67,8 @@ theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.pn
 theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
 theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
-theme.tasklist_plain_task_name                  = true
-theme.tasklist_disable_icon                     = true
+theme.tasklist_plain_task_name                  = True
+theme.tasklist_disable_icon                     = False
 theme.useless_gap                               = dpi(10)
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
@@ -147,6 +147,71 @@ local status = awful.widget.watch(
 
 
 
+
+
+
+
+
+-- local test123_text = wibox.widget.textbox()
+-- test123_text:set_markup("dwadwad")
+-- test123_text:set_align("center")
+
+-- local test123 = wibox.widget{
+--     {
+--         -- {
+--         --     markup = "<b>Hello World!</b>",
+--         --     align  = "center",
+--         --     widget = wibox.widget.textbox
+--         -- },
+--         test123_text,
+--         bg     = "#ff0000",
+--         widget = wibox.container.background,
+--     },
+--     width    = 300,
+--     strategy = "min",
+--     layout   = wibox.layout.constraint
+-- }
+-- local current_clock;
+-- test123:buttons(
+--     my_table.join(
+--         awful.button({ }, 2, 
+--             function() 
+--                 current_clock = os.clock()
+--                 test123Timer:start() 
+--             end
+--         ),
+--         awful.button({ }, 1, function() test123:set_width(test123:get_width() - 10) end),
+--         awful.button({ }, 3, function() test123_text:set_markup("1212121") end)
+--     )
+-- )
+
+
+-- test123Timer = lain.util.mstimer {
+--     timeout   = 1,
+--     call_now  = false,
+--     autostart = false,
+--     callback  = function()
+--         -- test123:set_width(test123:get_width() - 10) 
+--         -- test123Timer:stop();
+--         test123_text:set_markup("timer on" .. os.clock())  
+--         if current_clock < os.clock() - 10 then
+--             test123Timer:stop()
+--             test123_text:set_markup("end")
+--         end
+--     end
+-- }
+
+
+
+
+
+
+
+
+
+
+
+
 -- local mybatterybar = wibox.widget {
 --     {
 --         min_value    = 0,
@@ -196,16 +261,6 @@ local status = awful.widget.watch(
 
 
 
-
-
-
-
-
-
-
-local test     = wibox.widget.textbox('test123')
-test:set_markup('<span foreground="red">test</span>')
-
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
@@ -240,7 +295,7 @@ function theme.at_screen_connect(s)
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
@@ -260,6 +315,7 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             -- button,
             -- mybatterybar,
+            -- test123,
             status,
             separators.arrow_left("#3B4252", "black"),
             wibox.container.background(s.mylayoutbox, black),
