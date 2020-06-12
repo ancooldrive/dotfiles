@@ -75,16 +75,16 @@ awful.spawn.with_shell(
 
 local themes = {
     "mytheme",         -- 1
-    "blackburn",       -- 1
-    "copland",         -- 2
-    "dremora",         -- 3
-    "holo",            -- 4
-    "multicolor",      -- 5
-    "powerarrow",      -- 6
-    "powerarrow-dark", -- 7
-    "rainbow",         -- 8
-    "steamburn",       -- 9
-    "vertex",          -- 10
+    "blackburn",       -- 2
+    "copland",         -- 3
+    "dremora",         -- 4
+    "holo",            -- 5
+    "multicolor",      -- 6
+    "powerarrow",      -- 7
+    "powerarrow-dark", -- 8
+    "rainbow",         -- 9
+    "steamburn",       -- 10
+    "vertex",          -- 11
 }
 
 local chosen_theme = themes[1] --7
@@ -139,8 +139,8 @@ awful.util.taglist_buttons = my_table.join(
             client.focus:toggle_tag(t)
         end
     end),
-    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+    awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end)
 )
 
 awful.util.tasklist_buttons = my_table.join(

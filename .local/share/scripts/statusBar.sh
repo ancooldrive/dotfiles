@@ -107,7 +107,8 @@ function addPowerLineCheckUpdates
 	then
 		content='<span foreground="green">&#xf058;</span> up to date'
 	else
-		content='<span foreground="red">&#xf1b2;</span> '${count}' packages to update'
+		content='<span foreground="red">&#xf17c;</span> '${count}' packages to update'
+		# content='<span font="font awesome" foreground="red">&#xf1b2;</span> '${count}' packages to update'
 	fi
 	addPowerLineBlock "#E5E9F0" "#3B4252" "${content}"
 }
