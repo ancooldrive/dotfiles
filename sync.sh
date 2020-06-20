@@ -1,3 +1,5 @@
+#!/bin/sh
+
 repPath=${HOME}"/.git/dotfiles"
 
 ConfigArray=(
@@ -15,6 +17,8 @@ ConfigArray=(
     ~/.config/rofi
     ~/.config/st
     ~/.config/nano
+    ~/.config/micro/bindings.json
+    ~/.config/micro/settings.json
     # local
     ~/.local/share/rofi
     ~/.local/share/scripts
